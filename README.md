@@ -1,1 +1,160 @@
-# WingoPridictor1
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WINGO PREDICTOR</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      overflow: auto;
+      scroll-behavior: smooth;
+      font-size: 20px;
+    }
+
+    .wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px 0;
+    }
+
+    .container {
+      width: 400px;
+      height: 500px;
+      padding: 30px 20px;
+      background: #111;
+      border-radius: 25px;
+      border: 3px solid red;
+      box-shadow: 0 0 30px red;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 30px;
+      margin-bottom: 10px;
+      color: red;
+      text-shadow: 0 0 10px red;
+    }
+
+    .input-group {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+
+    input[type="text"] {
+      width: 280px;
+      padding: 10px 14px;
+      font-size: 18px;
+      border-radius: 8px;
+      border: 2px solid red;
+      background-color: #1a1a1a;
+      color: white;
+    }
+
+    .game-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .game-buttons button {
+      flex: 1;
+      height: 45px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 2px solid red;
+      background-color: #121212;
+      color: pink;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .game-buttons button.active {
+      background-color: red;
+      color: white;
+      box-shadow: 0 0 10px red;
+    }
+
+    .btn-submit {
+      background-color: red;
+      color: white;
+      font-size: 18px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 100%;
+      max-width: 180px;
+      margin: 0 auto 20px;
+      display: block;
+      box-shadow: 0 0 12px red;
+    }
+
+    .result-box {
+      border: 2px solid red;
+      padding: 10px;
+      border-radius: 10px;
+      width: 90px;
+      margin: 0 auto;
+      text-align: center;
+      background-color: #000;
+    }
+
+    .result-number {
+      font-size: 38px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 0 0 15px white;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <h1>WINGO PREDICTOR</h1>
+
+      <div class="input-group">
+        <input type="text" id="period" maxlength="21" placeholder="Enter Period Number"/>
+      </div>
+
+      <div class="game-buttons">
+        <button onclick="selectGame(this)">Wingo 30S</button>
+        <button onclick="selectGame(this)">Wingo 1M</button>
+        <button onclick="selectGame(this)">Wingo 3M</button>
+        <button onclick="selectGame(this)">Wingo 5M</button>
+      </div>
+
+      <button class="btn-submit" onclick="getResult()">Get Result</button>
+
+      <div class="result-box">
+        <div id="result" class="result-number">?</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function getResult() {
+      const randomNumber = Math.floor(Math.random() * 10); // 0 to 9
+      document.getElementById("result").textContent = randomNumber;
+    }
+
+    function selectGame(button) {
+      const buttons = document.querySelectorAll(".game-buttons button");
+      buttons.forEach(btn => btn.classList.remove("active"));
+      button.classList.add("active");
+    }
+  </script>
+</body>
+</html>
